@@ -31,7 +31,6 @@ const SearchBar: React.FC = () => {
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    console.log(value, "value fdo");
     setKeyword(value);
     dispatch(setShowSuggestions(true));
   };
@@ -53,6 +52,7 @@ const SearchBar: React.FC = () => {
   return (
     <div className="relative w-full">
       <input
+        data-testid="search-input"
         type="search"
         id="location-search"
         className={twMerge(
@@ -66,6 +66,7 @@ const SearchBar: React.FC = () => {
         value={keyword}
       />
       <button
+        data-testid="submit-button"
         type="submit"
         onClick={handleSubmit}
         className={twMerge(

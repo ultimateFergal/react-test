@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import App from "./App.tsx";
+import App from "../App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 describe("App tests", () => {
   const queryClient = new QueryClient();
-  it("should contain title in header for home page", () => {
+  it("should contain title in header for home page", async () => {
     render(
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
@@ -16,5 +16,8 @@ describe("App tests", () => {
     );
     const heading = screen.getByText(/GifSearch!/i);
     expect(heading).toBeInTheDocument();
+    // expect(await screen.getByText(/Trending Gifs/i)).toBeInTheDocument();
   });
+  
 });
+
